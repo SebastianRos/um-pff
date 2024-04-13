@@ -17,11 +17,12 @@ public class Colorize : MonoBehaviour
     void Update()
     {
         SpriteRenderer sprite = this.GetComponent<SpriteRenderer>();
+        Interactible interactible = this.GetComponent<Interactible>();
 
-        if(this.GetComponent<Interactible>().InteractionPossible() && !sprite.color.Equals(this.primaryColor)) {
+        if(!sprite.color.Equals(this.primaryColor) && interactible != null && interactible.InteractionPossible()) {
             sprite.color = this.primaryColor;
         }
-        if(!this.GetComponent<Interactible>().InteractionPossible() && !sprite.color.Equals(this.secondaryColor)) {
+        if(interactible != null && !interactible.InteractionPossible() && !sprite.color.Equals(this.secondaryColor)) {
             sprite.color = this.secondaryColor;
         }
     }

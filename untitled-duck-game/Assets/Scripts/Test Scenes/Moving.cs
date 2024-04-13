@@ -19,7 +19,8 @@ public class Moving : MonoBehaviour, IInteractor
         this.passed+= Time.deltaTime;
         Move();
     }
-    public void Interact(Collider2D collider) {
+
+    public void NearInteractable(Collider2D collider) {
         this.GetComponent<Transform>().Rotate(new Vector3(0,0,Time.deltaTime*this.rotationFactor));
     }
 
