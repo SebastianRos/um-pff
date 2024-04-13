@@ -6,6 +6,7 @@ public class playercontroller : MonoBehaviour
     public int maxSpeed;
     public int accelartion;
     public int decceleration;
+    public bool isMovementEnabled = true;
 
     public AnimationClip idleAnim;
     public AnimationClip walkingAnim;
@@ -28,10 +29,12 @@ public class playercontroller : MonoBehaviour
     }
 
     private void moveService(){
-        Vector2 inputDirection = new Vector2(
-            Input.GetAxis("Horizontal"),
-            Input.GetAxis("Vertical")
-        );
+        Vector2 inputDirection = isMovementEnabled
+            ? new Vector2(
+                Input.GetAxis("Horizontal"),
+                Input.GetAxis("Vertical")
+            ) 
+            : new Vector2(0, 0);
         Vector2 velocity = inputDirection * maxSpeed;
         
         rb.velocity = velocity;

@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1822009051226272523}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3}
+  m_LocalPosition: {x: 0, y: 0, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -268,6 +268,8 @@ MonoBehaviour:
   maxSpeed: 5
   accelartion: 0
   decceleration: 1
+  idleAnim: {fileID: 7400000, guid: b9084f1d4ac55f223a4fce33d0d383d9, type: 2}
+  walkingAnim: {fileID: 7400000, guid: 9ce05ad95159afeca9b607cd3773c9c9, type: 2}
 --- !u!95 &7328735661579263980
 Animator:
   serializedVersion: 5
