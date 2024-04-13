@@ -4,7 +4,7 @@ using UnityEngine;
 public class Interactible : MonoBehaviour
 {
     // This one has to be
-    public string INTERACTOR_TAG = "PLAYER";
+    public string INTERACTOR_TAG = "Player";
     private readonly List<Collider2D> withinVicinity = new List<Collider2D>();
     
     public bool InteractionPossible() {
@@ -20,8 +20,18 @@ public class Interactible : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        NotifyNearInteractible();
+    }
+
+    public void NotifyInteract() {
         for(int colliderIndex = 0; colliderIndex < this.withinVicinity.Count; colliderIndex++) {
             this.withinVicinity[colliderIndex].GetComponent<IInteractor>().Interact(this.GetComponent<Collider2D>());
+        }
+    }
+
+    public void NotifyNearInteractible() {
+        for(int colliderIndex = 0; colliderIndex < this.withinVicinity.Count; colliderIndex++) {
+            this.withinVicinity[colliderIndex].GetComponent<IInteractor>().NearInteractable(this.GetComponent<Collider2D>());
         }
     }
 
