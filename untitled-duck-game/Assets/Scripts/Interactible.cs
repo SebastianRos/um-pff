@@ -25,13 +25,13 @@ public class Interactible : MonoBehaviour
 
     public void NotifyInteract() {
         for(int colliderIndex = 0; colliderIndex < this.withinVicinity.Count; colliderIndex++) {
-            this.withinVicinity[colliderIndex].GetComponent<IInteractor>().Interact(this.GetComponent<Collider2D>());
+            this.withinVicinity[colliderIndex].GetComponent<IInteractor>()?.Interact(this.GetComponent<Collider2D>());
         }
     }
 
     public void NotifyNearInteractible() {
         for(int colliderIndex = 0; colliderIndex < this.withinVicinity.Count; colliderIndex++) {
-            this.withinVicinity[colliderIndex].GetComponent<IInteractor>().NearInteractable(this.GetComponent<Collider2D>());
+            this.withinVicinity[colliderIndex].GetComponent<IInteractor>()?.NearInteractable(this.GetComponent<Collider2D>());
         }
     }
 
