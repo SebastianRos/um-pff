@@ -1,7 +1,7 @@
 using UnityEditor.Animations;
 using UnityEngine;
 
-public class playercontroller : MonoBehaviour
+public class playercontroller : Listener
 {
     public int maxSpeed;
     public int accelartion;
@@ -16,6 +16,9 @@ public class playercontroller : MonoBehaviour
     private AnimatorState state;
 
     void Start() {
+        EventBus.Register("disablePlayer", gameObject);
+        EventBus.Register("enablePlayer", gameObject);
+
         rb = GetComponent<Rigidbody2D>();
 
         anim = (AnimatorController)GetComponent<Animator>().runtimeAnimatorController;
@@ -47,5 +50,10 @@ public class playercontroller : MonoBehaviour
             activeAnimation = idleAnim;
         }
         anim.SetStateEffectiveMotion(state, activeAnimation);
+    }
+
+    public override void Callback(string evt) {
+        if (evt.Equals("disablePlayer")) isMovementEnabled = false;
+        else if (evt.Equals("enablePlayer")) isMovementEnabled = true;
     }
 }

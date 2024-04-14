@@ -7,37 +7,21 @@ public class Pattern : MonoBehaviour {
     public float tolerance;
     public float time;
 
-    void Start() { 
-        
-    }
-
-    // Update is called once per frame
-    void Update() {
-        
-    }
-
-    // void OnDrawGizmosSelected(){
-    //     foreach (Transform point in transform.GetComponentsInChildren<Transform>()){
-    //         Debug.Log(point.name);
-    //         if (point == transform) continue;
-
-    //         Gizmos.DrawSphere(
-    //             point.position, 
-    //             tolerance
-    //         ); 
-    //     }
-    // }
-
     public PointPatternValidator getValidator(){
+        return new PointPatternValidator(
+            getPoints(),
+            tolerance
+        );
+    }
+
+    public Vector2[] getPoints(){
         List<Vector2> patternPoints = new List<Vector2>();
         foreach (Transform point in transform.GetComponentsInChildren<Transform>()){
             if (point == transform) continue;
             patternPoints.Add(point.position);
         }
-        return new PointPatternValidator(
-            patternPoints.ToArray(),
-            tolerance
-        );
+        patternPoints.Add(patternPoints[0]);
+        return patternPoints.ToArray();
     }
 }
 
