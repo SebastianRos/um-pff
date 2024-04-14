@@ -20,6 +20,7 @@ public class Summoning : Interactible
             this.NotifyInteract();
             if(this.summonedDuck) {
                 this.summonedDuck.SetActive(true);
+                EventBus.Fire("duck_activated");
             }
         }
     }
