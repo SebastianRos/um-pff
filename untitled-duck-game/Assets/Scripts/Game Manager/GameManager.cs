@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,6 +12,7 @@ public class GameManager : MonoBehaviour, IListener
         if(instance == null)
         {
             instance = this;
+            instance.Reset();
             DontDestroyOnLoad(gameObject);
         } else if(instance != this)
         {
@@ -36,14 +35,16 @@ public class GameManager : MonoBehaviour, IListener
         RESET,
         LOAD_SCENE,
         COLLECT_TOAST,
-        DAMAGE_PLAYER
+        DAMAGE_PLAYER,
+        GAME_OVER,
     }
     private readonly Dictionary<Events, string> MyEvents = new Dictionary<Events, string>()
     {
         {Events.RESET, "reset"},
         {Events.LOAD_SCENE, "load_scene"},
         {Events.COLLECT_TOAST, "collect_toast"},
-        {Events.DAMAGE_PLAYER, "damage_player"}
+        {Events.DAMAGE_PLAYER, "damage_player"},
+        {Events.GAME_OVER, "game_over"},
     };
     
     // Start is called before the first frame update
@@ -53,8 +54,6 @@ public class GameManager : MonoBehaviour, IListener
         {
             EventBus.Register(evt, this.gameObject);
         }
-
-        EventBus.Fire(this.MyEvents[Events.RESET]);
 
     }
 
@@ -68,7 +67,6 @@ public class GameManager : MonoBehaviour, IListener
     {
         this.currPlayerlife = this.maxPlayerLife;        
         this.currBreadcrumbs = this.startBreadcrumbs;
-        this.enemies = new List<GameObject>();
     }
 
     public void Callback(string evt) {
@@ -86,7 +84,7 @@ public class GameManager : MonoBehaviour, IListener
             if(this.currPlayerlife < 1) {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 EventBus.Fire(this.MyEvents[Events.RESET]);
-                // EventBus.Fire("game_over");
+                // EventBus.Fire(this.MyEvents[Events.GAME_OVER]);
                 Debug.Log("GAME OVER");
             }
         }
