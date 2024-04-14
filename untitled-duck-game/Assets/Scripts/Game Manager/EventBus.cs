@@ -36,13 +36,20 @@ public class EventBus : MonoBehaviour
     }
 
     void RegisterInstance(string evt, GameObject gameObject) {
-        this.listener.Add(new Tupel<string, GameObject>(evt, gameObject));
+        Tupel<string, GameObject> newTupel = new Tupel<string, GameObject>(evt, gameObject);
+        if(!this.listener.Exists(tupel => 
+            tupel.e.Equals(newTupel.e) 
+            && tupel.i.GetInstanceID().Equals(newTupel.i.GetInstanceID())
+        ))
+        {
+            this.listener.Add(newTupel);
+        }
     }
 
     void FireInstance(string evt) {
         bool firedOnce = false;
         foreach(Tupel<string, GameObject> tupel in this.listener) {
-            if(tupel.e.Equals(evt)) {
+            if(tupel.e.Equals(evt) && !tupel.i.IsDestroyed()) {
                 IListener listener = tupel.i.GetComponent<IListener>();
                 if(listener != null) {
                     listener.Callback(evt);
@@ -56,18 +63,18 @@ public class EventBus : MonoBehaviour
     }
 
     public static bool Fire(string evt) {
-        EventBus gm = GameObject.FindAnyObjectByType<EventBus>();
-        if(gm != null) {
-            gm.FireInstance(evt);
+        EventBus eb = GameObject.FindAnyObjectByType<EventBus>();
+        if(eb != null) {
+            eb.FireInstance(evt);
             return true;
         }
         return false;
     }
 
     public static bool Register(string evt, GameObject gameObject) {
-        EventBus gm = GameObject.FindAnyObjectByType<EventBus>();
-        if(gm != null) {
-            gm.RegisterInstance(evt, gameObject);
+        EventBus eb = GameObject.FindAnyObjectByType<EventBus>();
+        if(eb != null) {
+            eb.RegisterInstance(evt, gameObject);
             return true;
         }
         return false;
