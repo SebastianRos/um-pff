@@ -5,6 +5,7 @@ public abstract class Interactible : MonoBehaviour
 {
     // This one has to be
     public string interactor_tag = "Player";
+    public string trigger_event = null;
     private readonly List<GameObject> withinVicinity = new List<GameObject>();
 
     private AbstractInteractionBehavior[] ownInteractors;
@@ -22,6 +23,10 @@ public abstract class Interactible : MonoBehaviour
         if (this.ShouldInteractionTrigger() && this.InteractionPossible())
         {
             this.OnInteract();
+            if(this.trigger_event != null && !this.trigger_event.Equals(""))
+            {
+                EventBus.Fire(trigger_event);
+            }
         }
     }
     
