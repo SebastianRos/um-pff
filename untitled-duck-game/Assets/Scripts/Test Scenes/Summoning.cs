@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Summoning : Interactible
+public class Summoning : MonoBehaviour
 {
     public GameObject summonedDuck = null;
     // Start is called before the first frame update
@@ -16,12 +16,5 @@ public class Summoning : Interactible
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Interact") && this.InteractionPossible()) {
-            this.NotifyInteract();
-            if(this.summonedDuck) {
-                this.summonedDuck.SetActive(true);
-                EventBus.Fire("duck_activated");
-            }
-        }
     }
 }

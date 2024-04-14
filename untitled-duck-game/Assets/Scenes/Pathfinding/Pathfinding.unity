@@ -277,6 +277,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duck (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 6693919345063205844, guid: 682aadf9a1971231ca78f3379151c3c8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7234461168602175530, guid: 682aadf9a1971231ca78f3379151c3c8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5
@@ -958,6 +962,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duck (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 6693919345063205844, guid: 682aadf9a1971231ca78f3379151c3c8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7234461168602175530, guid: 682aadf9a1971231ca78f3379151c3c8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5
@@ -1039,6 +1047,10 @@ PrefabInstance:
     - target: {fileID: 6693919345063205844, guid: 682aadf9a1971231ca78f3379151c3c8, type: 3}
       propertyPath: m_Name
       value: Duck (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693919345063205844, guid: 682aadf9a1971231ca78f3379151c3c8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7234461168602175530, guid: 682aadf9a1971231ca78f3379151c3c8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1165,6 +1177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aStarDistance: 0.25
   collisionPreventionRadius: 0.7
+  stopOnTouch: 1
   aStarMaxDistance: 15
   senpai: {fileID: 771247344}
   speed: 0.5
@@ -1172,9 +1185,6 @@ MonoBehaviour:
   blockingLayers:
     serializedVersion: 2
     m_Bits: 128
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
   stopAtDistToTarget: 0
 --- !u!61 &1127842377
 BoxCollider2D:
@@ -1191,7 +1201,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -1271,6 +1281,10 @@ PrefabInstance:
     - target: {fileID: 6693919345063205844, guid: 682aadf9a1971231ca78f3379151c3c8, type: 3}
       propertyPath: m_Name
       value: Duck (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693919345063205844, guid: 682aadf9a1971231ca78f3379151c3c8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7234461168602175530, guid: 682aadf9a1971231ca78f3379151c3c8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1791,6 +1805,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duck (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 6693919345063205844, guid: 682aadf9a1971231ca78f3379151c3c8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7234461168602175530, guid: 682aadf9a1971231ca78f3379151c3c8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5
@@ -1872,6 +1890,10 @@ PrefabInstance:
     - target: {fileID: 6693919345063205844, guid: 682aadf9a1971231ca78f3379151c3c8, type: 3}
       propertyPath: m_Name
       value: Duck (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693919345063205844, guid: 682aadf9a1971231ca78f3379151c3c8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7234461168602175530, guid: 682aadf9a1971231ca78f3379151c3c8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1955,6 +1977,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duck (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 6693919345063205844, guid: 682aadf9a1971231ca78f3379151c3c8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7234461168602175530, guid: 682aadf9a1971231ca78f3379151c3c8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5
@@ -2036,6 +2062,10 @@ PrefabInstance:
     - target: {fileID: 6693919345063205844, guid: 682aadf9a1971231ca78f3379151c3c8, type: 3}
       propertyPath: m_Name
       value: Duck (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693919345063205844, guid: 682aadf9a1971231ca78f3379151c3c8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7234461168602175530, guid: 682aadf9a1971231ca78f3379151c3c8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2119,6 +2149,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duck (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6693919345063205844, guid: 682aadf9a1971231ca78f3379151c3c8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7234461168602175530, guid: 682aadf9a1971231ca78f3379151c3c8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5
@@ -2201,6 +2235,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Duck (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6693919345063205844, guid: 682aadf9a1971231ca78f3379151c3c8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7234461168602175530, guid: 682aadf9a1971231ca78f3379151c3c8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5
@@ -2282,6 +2320,10 @@ PrefabInstance:
     - target: {fileID: 6693919345063205844, guid: 682aadf9a1971231ca78f3379151c3c8, type: 3}
       propertyPath: m_Name
       value: Duck (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693919345063205844, guid: 682aadf9a1971231ca78f3379151c3c8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7234461168602175530, guid: 682aadf9a1971231ca78f3379151c3c8, type: 3}
       propertyPath: m_LocalPosition.x
