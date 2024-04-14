@@ -5,23 +5,9 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 interface IListener {
-    public void Callback();
+    public void Callback(string evt);
 }
 
 public abstract class Listener : MonoBehaviour, IListener
-{
-    public string eventName = "eventName";
-    // Start is called before the first frame update
-    void Start()
-    {
-        GameManager.RegisterForEvent(this.eventName, this.gameObject);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public abstract void Callback();
+{    public abstract void Callback(string evt);
 }
