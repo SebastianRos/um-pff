@@ -1,10 +1,10 @@
 # Graphics we still need
 
 ## Beschwörungsteich
-* Beschwörungsteich Tilemap
-* Zeichenbrett in Teich-optik
+* Beschwörungsteich Tilemap                erl.
+* Zeichenbrett in Teich-optik              erl.
 * Brot für Mauszeiger Icon
-* Brotkrümel, um die Beschwörungslinien im Zeichenbrett zu malen
+* Brotkrümel, um die Beschwörungslinien im Zeichenbrett zu malen    erl.
 
 ## Umgebung
 * Tilemap für Boden
@@ -50,9 +50,9 @@
 * Ente bewegung                              erl.
 
 ## Gegner (halb zerstückelte Opfer / Freunde von Q)
-* oder schwarze blobs mit bunten Augen
-* gegner idle
-* gegner bewegung
+* oder schwarze blobs mit bunten Augen       Ja
+* gegner idle                                1.
+* gegner bewegung                            1.
 * gegner angriff
   * melee
-  * schießen / projectil
+  * schießen / projectil                     Dytermite!! In gedenken an Eddie
