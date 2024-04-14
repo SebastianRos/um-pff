@@ -16,6 +16,7 @@ public class Colorize : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         SpriteRenderer sprite = this.GetComponent<SpriteRenderer>();
         Interactible interactible = this.GetComponent<Interactible>();
 
@@ -25,5 +26,6 @@ public class Colorize : MonoBehaviour
         if(interactible != null && !interactible.InteractionPossible() && !sprite.color.Equals(this.secondaryColor)) {
             sprite.color = this.secondaryColor;
         }
+        */
     }
 }

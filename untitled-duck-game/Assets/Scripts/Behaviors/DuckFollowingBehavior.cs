@@ -7,6 +7,10 @@ public class DuckFollowingBehavior: MonoBehaviour
     public LayerMask duckLayer;
     public Transform target;
 
+    public void Start() {
+        target = GameObject.Find("Player").transform;
+    }
+
     public bool isPathBlockedByDucks() {
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, target.position - transform.position, Vector2.Distance(transform.position, target.position), duckLayer);
 

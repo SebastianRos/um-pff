@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Stationary : Interactible
+public class Stationary : MonoBehaviour
 {
     public GameObject showWhileNear = null;
     private bool lastFrame = true;
@@ -15,15 +15,6 @@ public class Stationary : Interactible
 
     // Update is called once per frame
     void Update()
-    {
-        bool thisFrame = this.InteractionPossible();
-        if(thisFrame != this.lastFrame) {
-            this.lastFrame = thisFrame;
-            // toggle visibility
-            if(this.showWhileNear) {
-                this.showWhileNear.SetActive(thisFrame);
-            }
-        }
-        
+    {        
     }
 }
