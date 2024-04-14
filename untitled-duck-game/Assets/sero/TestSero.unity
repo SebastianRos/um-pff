@@ -2060,6 +2060,63 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &871894001
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6197127633679416534, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.090171
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197127633679416534, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.610559
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197127633679416534, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197127633679416534, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197127633679416534, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197127633679416534, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197127633679416534, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197127633679416534, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197127633679416534, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197127633679416534, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013356599057255370, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
+      propertyPath: m_Name
+      value: Enemy of God
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
 --- !u!1 &1057081763
 GameObject:
   m_ObjectHideFlags: 0
@@ -2150,23 +2207,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1707224247 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5849607523609812960, guid: d3e825f84f7321f9d9631c6721839244, type: 3}
-  m_PrefabInstance: {fileID: 5364159245355998051}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1707224255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1707224247}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3626fce7f3660b890960090f64abbf05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &328483073034586669
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2448,13 +2488,9 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 1822009051226272523, guid: d3e825f84f7321f9d9631c6721839244, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5849607523609812960, guid: d3e825f84f7321f9d9631c6721839244, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1707224255}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3e825f84f7321f9d9631c6721839244, type: 3}
 --- !u!1001 &7413756166529905252
 PrefabInstance:
@@ -2699,3 +2735,4 @@ SceneRoots:
   - {fileID: 5324649501460552433}
   - {fileID: 4120912873940967016}
   - {fileID: 9215990337174964711}
+  - {fileID: 871894001}
