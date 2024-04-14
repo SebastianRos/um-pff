@@ -1,11 +1,16 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Pattern : MonoBehaviour {
     // Start is called before the first frame update
     public float tolerance;
+    public Color activePointColor;
+    public Color inActivePointColor;
+
     public float time;
+
+    private int activeIndex = 0;
+
 
     public PointPatternValidator getValidator(){
         return new PointPatternValidator(
@@ -15,13 +20,31 @@ public class Pattern : MonoBehaviour {
     }
 
     public Vector2[] getPoints(){
-        List<Vector2> patternPoints = new List<Vector2>();
+        List<Vector2> vectors = new List<Vector2>();
         foreach (Transform point in transform.GetComponentsInChildren<Transform>()){
             if (point == transform) continue;
-            patternPoints.Add(point.position);
+            vectors.Add(point.position);
         }
-        patternPoints.Add(patternPoints[0]);
-        return patternPoints.ToArray();
+        vectors.Add(vectors[0]);
+        return vectors.ToArray();
+    }
+
+    public void setActivePoint(int index){
+        List<Transform> points = new List<Transform>();
+        foreach (Transform point in transform.GetComponentsInChildren<Transform>()){
+            if (point == transform) continue;
+            point.GetComponent<SpriteRenderer>().color = inActivePointColor;
+            points.Add(point);
+        }
+        points.Add(points[0]);
+        if (0 <= index && index < points.Count) {
+            points[index].GetComponent<SpriteRenderer>().color = activePointColor;
+            activeIndex = index;
+        }
+    }
+
+    public int getActiveIndex(){
+        return activeIndex;
     }
 }
 

@@ -1,7 +1,7 @@
 using UnityEditor.Animations;
 using UnityEngine;
 
-public class playercontroller : Listener
+public class playercontroller : MonoBehaviour, IListener
 {
     public int maxSpeed;
     public int accelartion;
@@ -52,7 +52,7 @@ public class playercontroller : Listener
         anim.SetStateEffectiveMotion(state, activeAnimation);
     }
 
-    public override void Callback(string evt) {
+    public void Callback(string evt) {
         if (evt.Equals("disablePlayer")) isMovementEnabled = false;
         else if (evt.Equals("enablePlayer")) isMovementEnabled = true;
     }

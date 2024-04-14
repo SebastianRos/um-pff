@@ -25,7 +25,8 @@ public class Drawboard : MonoBehaviour, Observable
         lineDrawer = GetComponentInChildren<LineDrawer>();
         startTime = Time.time;
 
-        generateArrows();
+        pattern.setActivePoint(0);
+        // generateArrows();
     }
 
     void Update(){
@@ -42,6 +43,7 @@ public class Drawboard : MonoBehaviour, Observable
                     status = pointResult;
                     foreach (Observer observer in observers) observer.notify();
                 }
+                pattern.setActivePoint(pattern.getActiveIndex()+1);
             }
         } else if (Input.GetAxis("Fire1") == 0)  {
             isButtonCurrentlyPressed = false;
@@ -109,8 +111,13 @@ public class Drawboard : MonoBehaviour, Observable
         for (int i = 1; i < points.Length; i++){
             Vector2 pointer = points[i] - points[i-1];
             Vector2 arrowLocation = points[i-1] + pointer*0.5f;
-            Quaternion arrowRotation = Quaternion.LookRotation(pointer);
-            Instantiate(arrowPref, arrowLocation, arrowRotation, transform);
+            Quaternion arrowRotation = Quaternion.LookRotation(Vector3.forward, pointer);
+            arrowRotation = arrowRotation * Quaternion.Euler(0, 0, 90);
+            GameObject arrow = Instantiate(arrowPref, arrowLocation, arrowRotation, transform);
+            arrow.GetComponent<SpriteRenderer>().size = new Vector2(
+                pointer.x,
+                arrow.GetComponent<SpriteRenderer>().size.y
+            );
         }
     }
 }
