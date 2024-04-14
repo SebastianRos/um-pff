@@ -1,0 +1,58 @@
+# Graphics we still need
+
+## Beschwörungsteich
+* Beschwörungsteich Tilemap
+* Zeichenbrett in Teich-optik
+* Brot für Mauszeiger Icon
+* Brotkrümel, um die Beschwörungslinien im Zeichenbrett zu malen
+
+## Umgebung
+* Tilemap für Boden
+* Tilemap für Wände
+  * Tür
+* Fackeln oder Laternen oder Lampen oder so
+* Spinnennetze
+* was uns sonst noch an deko einfällt ...
+
+## Player
+* Larry
+* AnimationClip: Larry steht
+* AnimationClip: Larry läuft
+* AnimationClip: Larry flops (stirbt)
+
+## Shiftig God (Q)
+* Bild von Larry, der am Tisch sitzt
+  * Mit Kabelbindern an Plastikstühle gefesselt
+  * Um ihn herum seine toten Freunde
+  * Über ihm der shifting god (Q)
+
+## Brotcollectibles (evt. nur eins davon)
+* Brotkasten
+* Brot auf dem Boden
+* Backofen
+
+## Enten
+
+### RAMboEnte
+* Ente Idle
+* Ente Angriff
+* Ente bewegung
+* Ente despawnt
+
+### Cyborg / ArnieEnte
+* Ente Idle
+* Ente bewegung
+* Ente Angriff (Laser)
+
+### FeuerEnte
+* Ente idle
+* Ente Angriff
+* Ente bewegung
+
+## Gegner (halb zerstückelte Opfer / Freunde von Q)
+* oder schwarze blobs mit bunten Augen
+* gegner idle
+* gegner bewegung
+* gegner angriff
+  * melee
+  * schießen / projectil
