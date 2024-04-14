@@ -5,7 +5,6 @@ public class Drawboard : MonoBehaviour, Observable
 {
     public float height;
     public float width;
-    public GameObject arrowPref;
 
     private List<Observer> observers = new List<Observer>();
     private Pattern pattern;
@@ -30,6 +29,8 @@ public class Drawboard : MonoBehaviour, Observable
     }
 
     void Update(){
+        // only do stuff, if we are still active
+        if (status != ValidatorStatus.KEEP_GOING) return;
 
         // Drawing
         if (!isButtonCurrentlyPressed && Input.GetAxis("Fire1") == 1){
@@ -49,9 +50,11 @@ public class Drawboard : MonoBehaviour, Observable
             isButtonCurrentlyPressed = false;
         }
 
-        // Timing
+        // update timer
         float timePassed = Time.time - startTime;
         timerbar.setPercentage(1 - (timePassed / pattern.time));
+
+        // fail if time runs out
         if (status == ValidatorStatus.KEEP_GOING && pattern.time <= timePassed){
             status = ValidatorStatus.FAILED;
             foreach (Observer observer in observers) observer.notify();
@@ -105,21 +108,6 @@ public class Drawboard : MonoBehaviour, Observable
         return point.x >= xMin && point.x <= xMax && point.y >= yMin && point.y <= yMax;
     }
 
-    private void generateArrows(){
-        Vector2[] points = pattern.getPoints();
-
-        for (int i = 1; i < points.Length; i++){
-            Vector2 pointer = points[i] - points[i-1];
-            Vector2 arrowLocation = points[i-1] + pointer*0.5f;
-            Quaternion arrowRotation = Quaternion.LookRotation(Vector3.forward, pointer);
-            arrowRotation = arrowRotation * Quaternion.Euler(0, 0, 90);
-            GameObject arrow = Instantiate(arrowPref, arrowLocation, arrowRotation, transform);
-            arrow.GetComponent<SpriteRenderer>().size = new Vector2(
-                pointer.x,
-                arrow.GetComponent<SpriteRenderer>().size.y
-            );
-        }
-    }
 }
 
 

@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7840522199696530621
 Transform:
   m_ObjectHideFlags: 0
@@ -251,7 +251,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.48, y: 0.48}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -328,7 +328,7 @@ SpriteRenderer:
   m_SortingLayerID: -550473893
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: -1085261964, guid: 9983551f7dd69434d894a769d6027056, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 864740ceb6a4d2df3b61e3f4bedade7c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -355,8 +355,8 @@ MonoBehaviour:
   accelartion: 0
   decceleration: 1
   isMovementEnabled: 1
-  idleAnim: {fileID: 7400000, guid: b9084f1d4ac55f223a4fce33d0d383d9, type: 2}
-  walkingAnim: {fileID: 7400000, guid: 9ce05ad95159afeca9b607cd3773c9c9, type: 2}
+  idleAnim: {fileID: 7400000, guid: ed4706d5a8eaaf5fc891553cbabbaddf, type: 2}
+  walkingAnim: {fileID: 7400000, guid: 04af2cd63740d8582997afb9d144836c, type: 2}
 --- !u!95 &7328735661579263980
 Animator:
   serializedVersion: 5
@@ -367,7 +367,7 @@ Animator:
   m_GameObject: {fileID: 5849607523609812960}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 868544f21c4ae23d8929f9848c13c337, type: 2}
+  m_Controller: {fileID: 9100000, guid: ca1ae25f6436a5ea492c9df2b634c9c8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

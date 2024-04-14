@@ -4,6 +4,7 @@ using UnityEngine;
 public class Pond : AbstractInteractionBehavior, Observer
 {
     public GameObject drawboardToInstantiate;
+    public GameObject duckToInstantiate;
 
     private Drawboard drawboardScript;
     private GameObject drawboardGo;

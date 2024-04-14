@@ -13,6 +13,7 @@ public class playercontroller : MonoBehaviour, IListener
 
     private Rigidbody2D rb;
     private AnimatorController anim;
+    private Animator animator;
     private AnimatorState state;
 
     void Start() {
@@ -22,6 +23,7 @@ public class playercontroller : MonoBehaviour, IListener
         rb = GetComponent<Rigidbody2D>();
 
         anim = (AnimatorController)GetComponent<Animator>().runtimeAnimatorController;
+        animator = GetComponent<Animator>();
         state = anim.layers[0].stateMachine.defaultState;
     }
 
@@ -43,13 +45,13 @@ public class playercontroller : MonoBehaviour, IListener
         rb.velocity = velocity;
     }
     private void animationService(){
-        AnimationClip activeAnimation;
+        // AnimationClip activeAnimation;
         if (rb.velocity.magnitude != 0){
-            activeAnimation = walkingAnim;
+            animator.SetBool("isWaling", true);
         } else {
-            activeAnimation = idleAnim;
+            animator.SetBool("isWaling", false);
         }
-        anim.SetStateEffectiveMotion(state, activeAnimation);
+        // anim.SetStateEffectiveMotion(state, activeAnimation);
     }
 
     public void Callback(string evt) {
