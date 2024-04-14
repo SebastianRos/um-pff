@@ -14,7 +14,7 @@ TagManager:
   - Player
   - Obstacle
   - Duck
-  - 
+  - Enemy
   - 
   - 
   - 
@@ -38,6 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background 1
+    uniqueID: 714229453
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Foreground 1
+    uniqueID: 3744493403
     locked: 0

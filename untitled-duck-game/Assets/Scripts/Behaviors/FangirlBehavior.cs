@@ -108,8 +108,10 @@ public class FangirlBehavior: MonoBehaviour
             // Then no further movement is required
             if (distToTarget <= 0)
             {
-                if(debug)
+                if(debug) {
                     Debug.DrawLine(current, targetPosition, Color.yellow);
+                    //Debug.Break();
+                }
                 
                 if (currentCost < costSoFar[targetPosition]) {
                     costSoFar[targetPosition] = currentCost;

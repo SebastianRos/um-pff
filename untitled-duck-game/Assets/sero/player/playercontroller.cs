@@ -33,7 +33,7 @@ public class playercontroller : MonoBehaviour
             ? new Vector2(
                 Input.GetAxis("Horizontal"),
                 Input.GetAxis("Vertical")
-            ) 
+            ).normalized 
             : new Vector2(0, 0);
         Vector2 velocity = inputDirection * maxSpeed;
         
