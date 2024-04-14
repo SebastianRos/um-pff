@@ -23,11 +23,13 @@ public class GameManager : MonoBehaviour, IListener
         RESET,
         LOAD_SCENE,
         COLLECT_TOAST,
+        DAMAGE_PLAYER
     }
     private string[] ListenToEvents = {
          "reset",
          "load_scene",
          "collect_toast",
+         "damage_player"
     };
 
     private void Awake() {
@@ -65,15 +67,26 @@ public class GameManager : MonoBehaviour, IListener
         this.enemies = new List<GameObject>();
     }
 
+    private bool EvtEquals(string evt, Events events) {
+        return evt.Equals(this.ListenToEvents[(int)events]);
+    }
+
     public void Callback(string evt) {
-        if(evt.Equals(this.ListenToEvents[(int)Events.RESET])) {
+        if(this.EvtEquals(evt, Events.RESET)) {
             this.Reset();
             return;
         }
-        if(evt.Equals(this.ListenToEvents[(int)Events.COLLECT_TOAST])) {
+        if(this.EvtEquals(evt, Events.COLLECT_TOAST)) {
             this.currBreadcrumbs++;
             Debug.Log("breadcrumbs: " + this.currBreadcrumbs);
             return;
+        }
+        if(this.EvtEquals(evt, Events.DAMAGE_PLAYER)) {
+            this.currPlayerlife--;
+            if(this.currPlayerlife < 1) {
+                EventBus.Fire("game_over");
+                Debug.Log("GAME OVER");
+            }
         }
     }
 }

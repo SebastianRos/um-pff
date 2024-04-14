@@ -57,5 +57,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c96431d7fb05ee870bdd40340bab9356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxPlayerLife: 1900
+  maxPlayerLife: 1
   startBreadcrumbs: 5
