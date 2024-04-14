@@ -2,13 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour, IListener
 {
-    // https://gamedev.stackexchange.com/questions/34874/where-to-attach-global-scripts-in-unity#answer-34879
-    public static GameManager Instance { get; private set; } = null;
-    
-// --- initialisation ---
+    // https://discussions.unity.com/t/dontdestroyonload-many-instances-of-one-object/154454/2
+    public static GameManager instance;
+
+    void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        } else if(instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+   
+    // --- initialisation ---
     public int maxPlayerLife = 1900;
     public int startBreadcrumbs = 5;
     // --- initialisation ---
@@ -25,32 +38,23 @@ public class GameManager : MonoBehaviour, IListener
         COLLECT_TOAST,
         DAMAGE_PLAYER
     }
-    private string[] ListenToEvents = {
-         "reset",
-         "load_scene",
-         "collect_toast",
-         "damage_player"
+    private readonly Dictionary<Events, string> MyEvents = new Dictionary<Events, string>()
+    {
+        {Events.RESET, "reset"},
+        {Events.LOAD_SCENE, "load_scene"},
+        {Events.COLLECT_TOAST, "collect_toast"},
+        {Events.DAMAGE_PLAYER, "damage_player"}
     };
-
-    private void Awake() {
-        if(Instance != null)
-        {
-            Debug.LogError("more than one instance");
-            return;
-        }
-        Instance = this;
-        DontDestroyOnLoad(this);
-    }
     
     // Start is called before the first frame update
     void Start()
     {
-        foreach(string evt in this.ListenToEvents)
+        foreach(string evt in this.MyEvents.Values)
         {
             EventBus.Register(evt, this.gameObject);
         }
 
-        EventBus.Fire(this.ListenToEvents[(int)Events.RESET]);
+        EventBus.Fire(this.MyEvents[Events.RESET]);
 
     }
 
@@ -67,24 +71,22 @@ public class GameManager : MonoBehaviour, IListener
         this.enemies = new List<GameObject>();
     }
 
-    private bool EvtEquals(string evt, Events events) {
-        return evt.Equals(this.ListenToEvents[(int)events]);
-    }
-
     public void Callback(string evt) {
-        if(this.EvtEquals(evt, Events.RESET)) {
+        if(evt.Equals(this.MyEvents[Events.RESET])) {
             this.Reset();
             return;
         }
-        if(this.EvtEquals(evt, Events.COLLECT_TOAST)) {
+        if(evt.Equals(this.MyEvents[Events.COLLECT_TOAST])) {
             this.currBreadcrumbs++;
             Debug.Log("breadcrumbs: " + this.currBreadcrumbs);
             return;
         }
-        if(this.EvtEquals(evt, Events.DAMAGE_PLAYER)) {
+        if(evt.Equals(this.MyEvents[Events.DAMAGE_PLAYER])) {
             this.currPlayerlife--;
             if(this.currPlayerlife < 1) {
-                EventBus.Fire("game_over");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                EventBus.Fire(this.MyEvents[Events.RESET]);
+                // EventBus.Fire("game_over");
                 Debug.Log("GAME OVER");
             }
         }
