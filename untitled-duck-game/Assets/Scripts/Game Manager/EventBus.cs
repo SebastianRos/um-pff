@@ -18,11 +18,6 @@ public class EventBus : MonoBehaviour
 {
     private List<Tupel<string, GameObject>> listener = new List<Tupel<string, GameObject>>();
 
-    void Awake() {
-        Register("reset", this.gameObject);
-        Fire("reset");   
-    }
-
     // Start is called before the first frame update
     void Start()
     {
