@@ -20,7 +20,9 @@ public class GameManager : Listener
     void Start()
     {
         EventBus.Register("reset", this.gameObject);
+        EventBus.Register("load_scene", this.gameObject);
         EventBus.Fire("reset");
+
     }
 
     // Update is called once per frame
@@ -39,6 +41,11 @@ public class GameManager : Listener
     public override void Callback(string evt) {
         if(evt.Equals("reset")) {
             this.Reset();
+            return;
+        }
+        if(evt.Equals("load_scene")) {
+            Debug.Log("change scene");
+            return;
         }
     }
 }

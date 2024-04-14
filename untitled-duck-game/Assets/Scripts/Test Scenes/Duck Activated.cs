@@ -21,6 +21,7 @@ public class DuckActivated : Listener
             this.gameObject.SetActive(false);
         }
         if(evt.Equals("duck_activated")) {
+            this.gameObject.SetActive(true);
             Debug.Log("Quack");
         }
     }
