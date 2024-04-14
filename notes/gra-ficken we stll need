@@ -16,8 +16,8 @@
 
 ## Player
 * Larry
-* AnimationClip: Larry steht
-* AnimationClip: Larry läuft
+* AnimationClip: Larry steht                erl.
+* AnimationClip: Larry läuft                erl.
 * AnimationClip: Larry flops (stirbt)
 
 ## Shiftig God (Q)
@@ -28,26 +28,26 @@
 
 ## Brotcollectibles (evt. nur eins davon)
 * Brotkasten
-* Brot auf dem Boden
+* Brot auf dem Boden                         erl.
 * Backofen
 
 ## Enten
 
 ### RAMboEnte
-* Ente Idle
+* Ente Idle                                  erl.
 * Ente Angriff
-* Ente bewegung
+* Ente bewegung                              erl.
 * Ente despawnt
 
 ### Cyborg / ArnieEnte
-* Ente Idle
-* Ente bewegung
-* Ente Angriff (Laser)
+* Ente Idle                                  erl.
+* Ente bewegung                              erl.
+* Ente Angriff (Laser)                       erl.
 
 ### FeuerEnte
-* Ente idle
-* Ente Angriff
-* Ente bewegung
+* Ente idle                                  erl.
+* Ente Angriff                               erl.
+* Ente bewegung                              erl.
 
 ## Gegner (halb zerstückelte Opfer / Freunde von Q)
 * oder schwarze blobs mit bunten Augen
