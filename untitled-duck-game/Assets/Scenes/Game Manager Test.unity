@@ -2493,6 +2493,7 @@ GameObject:
   - component: {fileID: 1440549861}
   - component: {fileID: 1440549860}
   - component: {fileID: 1440549863}
+  - component: {fileID: 1440549864}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -2654,6 +2655,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactor_tag: Player
   trigger_event: load_scene
+--- !u!114 &1440549864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440549857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 600fa4e41fe6013eda066bec0ea34c51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scene_name: Level
+  load_scene_event: load_scene
 --- !u!1 &1870705745
 GameObject:
   m_ObjectHideFlags: 0

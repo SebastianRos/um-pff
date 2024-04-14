@@ -43,9 +43,5 @@ public class GameManager : Listener
             this.Reset();
             return;
         }
-        if(evt.Equals("load_scene")) {
-            Debug.Log("change scene");
-            return;
-        }
     }
 }
