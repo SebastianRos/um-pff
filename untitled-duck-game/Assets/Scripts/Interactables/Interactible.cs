@@ -63,7 +63,7 @@ public abstract class Interactible : MonoBehaviour
      * detect interactor has left vicinity
      */
     private void OnTriggerExit2D(Collider2D collider) {
-        if(CollisionWithInteractor(collider) && this.FindCollider(collider) != -1) {
+        if(this.withinVicinity.Contains(collider.gameObject)) {
             this.withinVicinity.Remove(collider.gameObject);
         }
     }
