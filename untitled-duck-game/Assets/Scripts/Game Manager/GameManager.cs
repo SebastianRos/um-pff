@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : Listener
+public class GameManager : MonoBehaviour, IListener
 {
 // --- initialisation ---
     public int maxPlayerLife = 1900;
@@ -38,7 +38,7 @@ public class GameManager : Listener
         this.enemies = new List<GameObject>();
     }
 
-    public override void Callback(string evt) {
+    public void Callback(string evt) {
         if(evt.Equals("reset")) {
             this.Reset();
             return;
