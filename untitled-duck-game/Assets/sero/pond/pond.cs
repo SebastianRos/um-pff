@@ -42,8 +42,8 @@ public class Pond : AbstractInteractionBehavior, Observer
     private void onDrawBoardSuccess(){
         drawboardOpen = false;
         Destroy(drawboardGo);
-        Debug.Log("Yay");
         EventBus.Fire("enablePlayer");
+        Instantiate(duckToInstantiate, transform.position, Quaternion.identity);
     }
 
 }

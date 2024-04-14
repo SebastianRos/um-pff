@@ -12,19 +12,14 @@ public class playercontroller : MonoBehaviour, IListener
     public AnimationClip walkingAnim;
 
     private Rigidbody2D rb;
-    private AnimatorController anim;
     private Animator animator;
-    private AnimatorState state;
 
     void Start() {
         EventBus.Register("disablePlayer", gameObject);
         EventBus.Register("enablePlayer", gameObject);
 
         rb = GetComponent<Rigidbody2D>();
-
-        anim = (AnimatorController)GetComponent<Animator>().runtimeAnimatorController;
         animator = GetComponent<Animator>();
-        state = anim.layers[0].stateMachine.defaultState;
     }
 
     // Update is called once per frame
@@ -45,13 +40,11 @@ public class playercontroller : MonoBehaviour, IListener
         rb.velocity = velocity;
     }
     private void animationService(){
-        // AnimationClip activeAnimation;
         if (rb.velocity.magnitude != 0){
             animator.SetBool("isWaling", true);
         } else {
             animator.SetBool("isWaling", false);
         }
-        // anim.SetStateEffectiveMotion(state, activeAnimation);
     }
 
     public void Callback(string evt) {
