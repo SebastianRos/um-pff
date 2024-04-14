@@ -43,7 +43,7 @@ public class EventBus : MonoBehaviour
         bool firedOnce = false;
         foreach(Tupel<string, GameObject> tupel in this.listener) {
             if(tupel.e.Equals(evt)) {
-                Listener listener = tupel.i.GetComponent<Listener>();
+                IListener listener = tupel.i.GetComponent<IListener>();
                 if(listener != null) {
                     listener.Callback(evt);
                     firedOnce = true;
