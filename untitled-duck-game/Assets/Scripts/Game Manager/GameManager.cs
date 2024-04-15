@@ -77,7 +77,6 @@ public class GameManager : MonoBehaviour, IListener
         }
         if(evt.Equals(this.MyEvents[Events.COLLECT_TOAST])) {
             this.currBreadcrumbs++;
-            Debug.Log("breadcrumbs: " + this.currBreadcrumbs);
             return;
         }
         if(evt.Equals(this.MyEvents[Events.DAMAGE_PLAYER])) {

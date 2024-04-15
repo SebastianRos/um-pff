@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6891597141942319463}
   - component: {fileID: 3415351238724078105}
   - component: {fileID: 8560490263972625845}
-  - component: {fileID: 2755457080679356737}
   - component: {fileID: 3901222922824963184}
   m_Layer: 0
   m_Name: InteractInfo
@@ -160,21 +159,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2755457080679356737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2490425143459021897}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75901e601bca2e7ffa2237d3a1a35eed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactor_tags:
-  - Player
-  TriggerEvents: []
 --- !u!114 &3901222922824963184
 MonoBehaviour:
   m_ObjectHideFlags: 0
