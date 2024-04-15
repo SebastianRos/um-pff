@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6121814920054224045}
   - component: {fileID: 5700607887343604513}
   - component: {fileID: 2563318797518999442}
-  - component: {fileID: 6828188098520601421}
   - component: {fileID: 5918668746553984649}
   m_Layer: 0
   m_Name: InteractInfo
@@ -43,7 +42,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1732263816235200288}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -160,21 +159,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6828188098520601421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1732263816235200288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75901e601bca2e7ffa2237d3a1a35eed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactor_tags:
-  - Player
-  TriggerEvents: []
 --- !u!114 &5918668746553984649
 MonoBehaviour:
   m_ObjectHideFlags: 0
