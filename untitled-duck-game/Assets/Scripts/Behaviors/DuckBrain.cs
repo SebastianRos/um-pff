@@ -15,6 +15,7 @@ public class DuckBrain : MonoBehaviour
 
     private GameObject enemyNumberOne;
     public Transform Player;
+    public bool isMoving = true;
 
 
     void Awake()
@@ -24,30 +25,9 @@ public class DuckBrain : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
-    {
-        if(!this.duckFollowingBehavior.target)
-        {
-            return;
-        }
-
-
-        // Path to target isn't blocked: Move to target
-        if (!duckFollowingBehavior.isPathBlockedByDucks())
-        {
-            fangirlBehavior.senpai = duckFollowingBehavior.target;
-            fangirlBehavior.stopAtDistToTarget = 0.6f;
-        }
-        // Path to target is blocked; Follow frontman
-        else 
-        {
-            DuckBrain closestDuck = duckFollowingBehavior.getClosestBlockingDuck();
-            fangirlBehavior.senpai = closestDuck.transform;
-            fangirlBehavior.stopAtDistToTarget = 0.45f;
-        }
-
-        Vector2 move = fangirlBehavior.CalculateDirection();
-        this.rb.velocity = move;
+    void Update() {
+        if (isMoving) followSenpai();
+        else rb.velocity = Vector2.zero;
     }
 
     void FixedUpdate() {
@@ -91,5 +71,30 @@ public class DuckBrain : MonoBehaviour
     {
         this.Player = player;
         this.duckFollowingBehavior.target = player;
+    }
+
+    private void followSenpai(){
+        if(!this.duckFollowingBehavior.target)
+        {
+            return;
+        }
+
+
+        // Path to target isn't blocked: Move to target
+        if (!duckFollowingBehavior.isPathBlockedByDucks())
+        {
+            fangirlBehavior.senpai = duckFollowingBehavior.target;
+            fangirlBehavior.stopAtDistToTarget = 0.6f;
+        }
+        // Path to target is blocked; Follow frontman
+        else 
+        {
+            DuckBrain closestDuck = duckFollowingBehavior.getClosestBlockingDuck();
+            fangirlBehavior.senpai = closestDuck.transform;
+            fangirlBehavior.stopAtDistToTarget = 0.45f;
+        }
+
+        Vector2 move = fangirlBehavior.CalculateDirection();
+        this.rb.velocity = move;
     }
 }
