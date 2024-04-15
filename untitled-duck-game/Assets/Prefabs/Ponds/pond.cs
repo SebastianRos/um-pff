@@ -15,6 +15,7 @@ public class Pond : AbstractInteractionBehavior, Observer
     }
 
     public override void OnInteract(string tag) {
+        Debug.Log("Interact with pond");
         if ( 
             0 < GameManager.instance.getBreadCount() 
             && !drawboardOpen

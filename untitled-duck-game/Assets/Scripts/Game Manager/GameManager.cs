@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour, IListener
             DontDestroyOnLoad(duck.gameObject);
         }
 
-        AsyncOperation load = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+        AsyncOperation load = SceneManager.LoadSceneAsync(takeDucksWithYou ? SceneManager.GetActiveScene().buildIndex : 0);
 
         while(!load.isDone)
         {

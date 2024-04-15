@@ -1,26 +1,23 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class playerNearPond : MonoBehaviour
+public class playerNearPond : AbstractInteractionBehavior
 {
-
-    public void Start() {
-        this.GetComponent<Canvas>().enabled = false;
-    }
-    public void OnTriggerEnter2D(Collider2D collider)
+    Coroutine _coroutine = null;
+    public override void OnInteract(string tag)
     {
-        GameObject player = GameObject.Find("Player");
-        if(player != null && player.GetInstanceID().Equals(collider.gameObject.GetInstanceID()))
-        {
-            this.GetComponent<Canvas>().enabled = true;
+        if(this._coroutine != null) {
+            StopCoroutine(this._coroutine);
         }
+        this._coroutine = StartCoroutine(this.EnableSprite());
     }
 
-    public void OnTriggerExit2D(Collider2D collider)
+    private IEnumerator EnableSprite()
     {
-        GameObject player = GameObject.Find("Player");
-        if(player != null && player.GetInstanceID().Equals(collider.gameObject.GetInstanceID()))
-        {
-            this.GetComponent<Canvas>().enabled = false;
-        }
+        this.GetComponentInChildren<SpriteRenderer>().enabled = true;
+        yield return new WaitForSeconds(0.2f);
+        this.GetComponentInChildren<SpriteRenderer>().enabled = false;
     }
 }
