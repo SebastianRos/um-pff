@@ -32,6 +32,7 @@ public class Pond : AbstractInteractionBehavior, Observer
     private void openDrawBoard(){
         EventBus.Fire("disablePlayer");
 
+        GameManager.instance.decrementBread();
         drawboardOpen = true;
         drawboardGo = Instantiate(drawboardToInstantiate, transform.position, Quaternion.identity);
         drawboardScript = drawboardGo.GetComponent<Drawboard>();
@@ -45,7 +46,6 @@ public class Pond : AbstractInteractionBehavior, Observer
         EventBus.Fire("enablePlayer");
     }
     private void onDrawBoardSuccess(){
-        GameManager.instance.decrementBread();
         duckSummend = true;
         drawboardOpen = false;
         Destroy(drawboardGo);
