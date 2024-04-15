@@ -11,9 +11,11 @@ public class Pond : AbstractInteractionBehavior, Observer
     private bool drawboardOpen = false;
     private bool duckSummend = false;
     
+    public void Start(){
+    }
 
     public override void OnInteract(string tag) {
-        if (
+        if ( 
             0 < GameManager.instance.getBreadCount() 
             && !drawboardOpen
             && !duckSummend
@@ -45,6 +47,11 @@ public class Pond : AbstractInteractionBehavior, Observer
         EventBus.Fire("enablePlayer");
     }
     private void onDrawBoardSuccess(){
+        GameObject cam = GameObject.FindGameObjectWithTag("MainCamera");
+        if (cam != null){
+            cam.GetComponent<AudioSource>().Play();
+        }
+
         duckSummend = true;
         drawboardOpen = false;
         Destroy(drawboardGo);

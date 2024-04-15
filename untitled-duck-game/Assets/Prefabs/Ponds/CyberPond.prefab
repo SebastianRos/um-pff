@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawboardToInstantiate: {fileID: 3981127969691911817, guid: b4faddd68a17c1d12ac51599612f97cb, type: 3}
-  duckToInstantiate: {fileID: 875452791571260848, guid: b4ba893e7b1a95145bf57363980c8681, type: 3}
+  duckToInstantiate: {fileID: 633450228017206581, guid: b4ba893e7b1a95145bf57363980c8681, type: 3}
 --- !u!114 &6628215711200184843
 MonoBehaviour:
   m_ObjectHideFlags: 0
