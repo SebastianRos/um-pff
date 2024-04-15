@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -82,7 +84,7 @@ public class GameManager : MonoBehaviour, IListener
             this.currPlayerlife--;
             if(this.currPlayerlife < 1) {
                 EventBus.Fire(this.MyEvents[Events.RESET]);
-                this.ChangeScene(true);
+                StartCoroutine(this.ChangeScene(true));
                 // EventBus.Fire(this.MyEvents[Events.GAME_OVER]);
                 Debug.Log("GAME OVER");
             }
@@ -105,7 +107,7 @@ public class GameManager : MonoBehaviour, IListener
         currBreadcrumbs++;
     }
 
-    private void ChangeScene(bool takeDucksWithYou)
+    private IEnumerator ChangeScene(bool takeDucksWithYou)
     {
         DuckBrain[] ducks = takeDucksWithYou ? FindObjectsOfType<DuckBrain>() : new DuckBrain[0];
         foreach(DuckBrain duck in ducks)
@@ -113,18 +115,18 @@ public class GameManager : MonoBehaviour, IListener
             DontDestroyOnLoad(duck.gameObject);
         }
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        AsyncOperation load = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
 
-        DuckBrain[] nextLevelDucks = FindObjectsOfType<DuckBrain>().Where(d=>!ducks.Contains(d)).ToArray();
-
-        if(nextLevelDucks.Length == 0)
+        while(!load.isDone)
         {
-            return;
+            yield return null;
         }
+
+        GameObject player = GameObject.Find("Player");
 
         foreach(DuckBrain duck in ducks)
         {
-            duck.GetComponent<DuckFollowingBehavior>().target = nextLevelDucks[0].GetComponent<DuckFollowingBehavior>().target;
+            duck.SetPlayer(player.transform);
         }
 
 
