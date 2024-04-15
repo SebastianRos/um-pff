@@ -4,14 +4,13 @@ using UnityEngine;
 public class Pond : AbstractInteractionBehavior, Observer
 {
     public GameObject drawboardToInstantiate;
-    public GameObject duckToInstantiate;
+    public DuckBrain duckToInstantiate;
 
     private Drawboard drawboardScript;
     private GameObject drawboardGo;
     private bool drawboardOpen = false;
     private bool duckSummend = false;
-    // Start is called before the first frame update
-    void Start(){}
+    
 
     public override void OnInteract(string tag) {
         if (
@@ -50,7 +49,9 @@ public class Pond : AbstractInteractionBehavior, Observer
         drawboardOpen = false;
         Destroy(drawboardGo);
         EventBus.Fire("enablePlayer");
-        Instantiate(duckToInstantiate, transform.position, Quaternion.identity);
+        
+        DuckBrain newDuck = Instantiate(duckToInstantiate, transform.position, Quaternion.identity);
+        newDuck.SetPlayer(GameObject.FindGameObjectWithTag("Player").transform);
         Destroy(gameObject);
     }
 

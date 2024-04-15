@@ -161,7 +161,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.75, y: 0.75}
   m_EdgeRadius: 0
 --- !u!114 &-1181873029179170512
 MonoBehaviour:
@@ -175,5 +175,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75901e601bca2e7ffa2237d3a1a35eed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactor_tag: Player
-  trigger_event: level_complete
+  interactor_tags:
+  - Player
+  TriggerEvents:
+  - tagName: Player
+    eventName: level_complete

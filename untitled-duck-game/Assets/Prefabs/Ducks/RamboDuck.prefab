@@ -155,7 +155,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -203,6 +203,10 @@ MonoBehaviour:
   EnemyLayer:
     serializedVersion: 2
     m_Bits: 512
+  ObstacleLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  enemyNumberOne: {fileID: 0}
   Player: {fileID: 0}
 --- !u!114 &2892144251939749541
 MonoBehaviour:

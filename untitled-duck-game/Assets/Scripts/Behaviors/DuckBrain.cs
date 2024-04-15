@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(Collider2D))]
 public class DuckBrain : MonoBehaviour
@@ -12,8 +13,9 @@ public class DuckBrain : MonoBehaviour
 
     public int EnemyTargetRange;
     public LayerMask EnemyLayer;
+    public LayerMask ObstacleLayer;
 
-    private GameObject enemyNumberOne;
+    public GameObject enemyNumberOne;
     public Transform Player;
     public bool isMoving = true;
 
@@ -31,6 +33,7 @@ public class DuckBrain : MonoBehaviour
     }
 
     void FixedUpdate() {
+        CustomDebug.DrawCircle(this.transform.position, this.EnemyTargetRange, 120, Color.gray);
         if(this.enemyNumberOne == null) {
             this.chooseEnemyNumberOne();
 
@@ -50,7 +53,7 @@ public class DuckBrain : MonoBehaviour
     }
 
     void chooseEnemyNumberOne() {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(this.transform.position, this.EnemyTargetRange, 1 << this.EnemyLayer);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(this.transform.position, this.EnemyTargetRange, this.EnemyLayer);
 
         GameObject closestEnemy = null;
         float minDistance = this.EnemyTargetRange + 1;
@@ -58,8 +61,14 @@ public class DuckBrain : MonoBehaviour
         foreach(Collider2D hit in hits) {
             float dist = Vector2.Distance(hit.transform.position, transform.position);
             if(dist < minDistance) {
-                closestEnemy = hit.gameObject;
-                minDistance = dist;
+                Debug.DrawRay(this.transform.position, (hit.transform.position - this.transform.position).normalized * this.EnemyTargetRange, Color.gray);
+                RaycastHit2D fHit = Physics2D.Raycast(this.transform.position, hit.transform.position - this.transform.position, this.EnemyTargetRange, this.ObstacleLayer);
+
+                if(!fHit.collider) {
+                    Debug.Log("No Hit");
+                    closestEnemy = hit.gameObject;
+                    minDistance = dist;
+                }
             }
         }
 

@@ -61,8 +61,9 @@ public abstract class Interactible : MonoBehaviour
     }
     
     private bool InteractionPossible(string tag) {
-        if(this.withinVicinity.ContainsKey(tag))
+        if(this.withinVicinity.ContainsKey(tag)) {
             return this.withinVicinity[tag].Count != 0;
+        }
         return false;
     }
 
@@ -90,17 +91,18 @@ public abstract class Interactible : MonoBehaviour
         return null;
     }
 
-    private int FindCollider(string tag, Collider2D c1) {
-        return this.withinVicinity[tag].FindIndex((match) => c1.GetInstanceID() == match.GetInstanceID());
-    }
-
     /**
      * detect interactor has entered vicinity
      */
     private void OnTriggerEnter2D(Collider2D collider) {
         string tag = GetInteractorTag(collider);
-        if(tag != null && this.FindCollider(tag, collider) == -1) {
-            this.withinVicinity[tag].Add(collider.gameObject);
+        if(tag != null && this.interactor_tags.Contains(tag)) {
+            if(!this.withinVicinity.ContainsKey(tag)) {
+                this.withinVicinity[tag] = new List<GameObject>();
+            }
+            if(!this.withinVicinity[tag].Contains(collider.gameObject)) {
+                this.withinVicinity[tag].Add(collider.gameObject);
+            }
         }
     }
     
