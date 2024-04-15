@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public abstract class Interactible : MonoBehaviour
