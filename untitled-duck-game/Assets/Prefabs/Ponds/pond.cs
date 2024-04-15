@@ -51,6 +51,7 @@ public class Pond : AbstractInteractionBehavior, Observer
         Destroy(drawboardGo);
         EventBus.Fire("enablePlayer");
         Instantiate(duckToInstantiate, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 
 }
