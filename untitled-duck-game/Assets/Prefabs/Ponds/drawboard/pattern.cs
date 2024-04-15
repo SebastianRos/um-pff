@@ -6,8 +6,9 @@ public class Pattern : MonoBehaviour {
     public float tolerance;
     public Color activePointColor;
     public Color inActivePointColor;
+    public float timeDecrasePerStage = 0.2f;
 
-    public float time;
+    public float time = 5;
 
     private int activeIndex = 0;
 
@@ -45,6 +46,10 @@ public class Pattern : MonoBehaviour {
 
     public int getActiveIndex(){
         return activeIndex;
+    }
+
+    public float getTime(){
+        return time - timeDecrasePerStage*GameManager.instance.currStage;
     }
 }
 

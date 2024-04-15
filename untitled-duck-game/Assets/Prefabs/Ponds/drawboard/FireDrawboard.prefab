@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1fd9030ec5427053869a7bd65932a2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tolerance: 1.26
+  tolerance: 0.8
   activePointColor: {r: 0, g: 0.34246022, b: 0.004892319, a: 1}
   inActivePointColor: {r: 0.57520396, g: 0.22138834, b: 0, a: 1}
   time: 5
