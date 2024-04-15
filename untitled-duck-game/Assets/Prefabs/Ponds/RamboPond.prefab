@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawboardToInstantiate: {fileID: 3981127969691911817, guid: 263d6e0f304abc581bcb4e65d2b49725, type: 3}
-  duckToInstantiate: {fileID: 8412962277589538549, guid: fe7cd9897ef38693881161c234a43761, type: 3}
+  duckToInstantiate: {fileID: 7578918556077729773, guid: fe7cd9897ef38693881161c234a43761, type: 3}
 --- !u!114 &7534917201795742364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,8 +62,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f14f14294dcc0c7b1b95f9de320e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactor_tag: Player
-  trigger_event: 
+  interactor_tags:
+  - Player
+  TriggerEvents: []
 --- !u!61 &2526034154566256083
 BoxCollider2D:
   m_ObjectHideFlags: 0

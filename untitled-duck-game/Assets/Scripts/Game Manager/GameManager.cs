@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour, IListener
             this.currPlayerlife--;
             if(this.currPlayerlife < 1) {
                 EventBus.Fire(this.MyEvents[Events.RESET]);
-                StartCoroutine(this.ChangeScene(true));
+                StartCoroutine(this.ChangeScene(false));
                 // EventBus.Fire(this.MyEvents[Events.GAME_OVER]);
                 Debug.Log("GAME OVER");
             }
@@ -92,7 +92,8 @@ public class GameManager : MonoBehaviour, IListener
         }
         if(evt.Equals(this.MyEvents[Events.LEVEL_COMPLETE])) {
             this.currStage++;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            StartCoroutine(this.ChangeScene(true));
             return;
         }
     }
@@ -127,8 +128,38 @@ public class GameManager : MonoBehaviour, IListener
         foreach(DuckBrain duck in ducks)
         {
             duck.SetPlayer(player.transform);
+            duck.transform.position = player.transform.position + new Vector3(
+                UnityEngine.Random.Range(-1.0f, 1.0f),
+                UnityEngine.Random.Range(-1.0f, 1.0f),
+                0
+            );
         }
 
+        bool didMove = MoveDucks(ducks);
+        int j;
+        for(j = 0; j < 100 && didMove; j++) {
+            didMove = MoveDucks(ducks);
+        }
+        Debug.Log("Duck moves: " + j);
+    }
 
+    bool MoveDucks(DuckBrain[] ducks) {
+        bool moved = false;
+
+        foreach(DuckBrain duck in ducks) {
+            foreach(DuckBrain duck2 in ducks) {
+                if (duck != duck2) {
+                    float distance = Vector2.Distance(duck.transform.position, duck2.transform.position);
+                    if(distance < 1.2) {
+                        moved = true;
+                        Vector3 direction = (duck.transform.position - duck2.transform.position).normalized;
+                        duck.transform.position += direction / 2;
+                        duck2.transform.position -= direction / 2;
+                    }
+                }
+            }
+        }
+
+        return moved;
     }
 }
