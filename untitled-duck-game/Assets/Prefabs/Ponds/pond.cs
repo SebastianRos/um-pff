@@ -13,7 +13,7 @@ public class Pond : AbstractInteractionBehavior, Observer
     // Start is called before the first frame update
     void Start(){}
 
-    public override void OnInteract() {
+    public override void OnInteract(string tag) {
         if (
             0 < GameManager.instance.getBreadCount() 
             && !drawboardOpen

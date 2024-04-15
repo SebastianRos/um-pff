@@ -272,8 +272,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75901e601bca2e7ffa2237d3a1a35eed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactor_tag: Player
-  trigger_event: 
+  interactor_tags:
+  - Player
+  - Duck
+  TriggerEvents:
+  - tagName: Player
+    eventName: damage_player
 --- !u!114 &6459569008422246534
 MonoBehaviour:
   m_ObjectHideFlags: 0

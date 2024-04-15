@@ -17,7 +17,6 @@ public class DuckBrain : MonoBehaviour
     public Transform Player;
 
 
-
     void Awake()
     {
         fangirlBehavior = GetComponent<FangirlBehavior>();

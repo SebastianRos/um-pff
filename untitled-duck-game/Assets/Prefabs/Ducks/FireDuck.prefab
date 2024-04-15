@@ -12,10 +12,15 @@ GameObject:
   - component: {fileID: 8109415565186258442}
   - component: {fileID: 6771462733009886855}
   - component: {fileID: 3192846873637739181}
+  - component: {fileID: 6113095113748496032}
   - component: {fileID: -3468911625409233971}
-  m_Layer: 0
+  - component: {fileID: 2993822074802476755}
+  - component: {fileID: 4249486497135400029}
+  - component: {fileID: 4205782098802457285}
+  - component: {fileID: 9037399571856219364}
+  m_Layer: 8
   m_Name: FireDuck
-  m_TagString: Untagged
+  m_TagString: Duck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,6 +140,41 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &6113095113748496032
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3021268529569912299}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.55
 --- !u!114 &-3468911625409233971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,3 +187,75 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3626fce7f3660b890960090f64abbf05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2993822074802476755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3021268529569912299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 951c21d889b6863529488f362e1554c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyTargetRange: 3
+  EnemyLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  Player: {fileID: 0}
+--- !u!114 &4249486497135400029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3021268529569912299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1b370edaf9264656b717a29f0c3dacb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aStarDistance: 1
+  collisionPreventionRadius: 0.25
+  stopOnTouch: 1
+  aStarMaxDistance: 15
+  senpai: {fileID: 0}
+  speed: 4
+  debug: 0
+  blockingLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  stopAtDistToTarget: 0.6
+--- !u!114 &4205782098802457285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3021268529569912299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0667f92830659a4887aaa95da5dfa4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duckLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  target: {fileID: 0}
+--- !u!114 &9037399571856219364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3021268529569912299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16e04d3acc76deae8b1a5938338a3d3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExplosionRadius: 3
+  EnemyLayer:
+    serializedVersion: 2
+    m_Bits: 512

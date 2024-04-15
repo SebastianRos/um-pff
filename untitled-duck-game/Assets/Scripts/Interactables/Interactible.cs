@@ -1,45 +1,77 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 
 public abstract class Interactible : MonoBehaviour
 {
+    [Serializable]
+    public struct EventToTrigger {
+        public string tagName;
+        public string eventName;
+    }
+
     // This one has to be
     public List<string> interactor_tags = new List<string>{"Player"};
-    public string trigger_event = null;
-    private readonly List<GameObject> withinVicinity = new List<GameObject>();
+    public EventToTrigger[] TriggerEvents;
+    private Dictionary<string, List<string>> eventsForTag = new Dictionary<string, List<string>>();
+    private readonly Dictionary<string, List<GameObject>> withinVicinity = new Dictionary<string, List<GameObject>>();
 
     private AbstractInteractionBehavior[] ownInteractors;
 
     public abstract bool ShouldInteractionTrigger();
 
 
-    void Start() {
+    void Awake() {
         ownInteractors = this.GetComponents<AbstractInteractionBehavior>();
+        
+        foreach (string tag in interactor_tags)
+        {
+            this.withinVicinity[tag] = new List<GameObject>();
+        }
+        
+        foreach (EventToTrigger eventToTrigger in TriggerEvents)
+        {
+            if(!this.eventsForTag.ContainsKey(eventToTrigger.tagName)) {
+                this.eventsForTag.Add(eventToTrigger.tagName, new List<string>());
+            }
+            this.eventsForTag[eventToTrigger.tagName].Add(eventToTrigger.eventName);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (this.ShouldInteractionTrigger() && this.InteractionPossible())
+        if (this.ShouldInteractionTrigger())
         {
-            this.OnInteract();
-            if(this.trigger_event != null && !this.trigger_event.Equals(""))
+            foreach (string tag in interactor_tags)
             {
-                EventBus.Fire(trigger_event);
+                if(this.InteractionPossible(tag)) {
+                    this.OnInteract(tag);
+
+                    if(eventsForTag.ContainsKey(tag)) {
+                        foreach(string eventName in eventsForTag[tag]) {
+                            EventBus.Fire(eventName);
+                        }
+                    }
+                }
             }
         }
     }
     
-    private bool InteractionPossible() {
-        return this.withinVicinity.Count != 0;
+    private bool InteractionPossible(string tag) {
+        if(this.withinVicinity.ContainsKey(tag))
+            return this.withinVicinity[tag].Count != 0;
+        return false;
     }
 
 
-    private void OnInteract() {
+    private void OnInteract(string tag) {
         foreach(AbstractInteractionBehavior interactor in this.ownInteractors) {
-            interactor.OnInteract();
+            interactor.OnInteract(tag);
         }
-        foreach(GameObject go in withinVicinity) {
+        foreach(GameObject go in withinVicinity[tag]) {
             go.GetComponent<IInteractor>()?.OnInteract(this.GetComponent<Collider2D>());
         }
     }
@@ -47,27 +79,28 @@ public abstract class Interactible : MonoBehaviour
     /**
      * unify collision detection 
      */
-    private bool CollisionWithInteractor(Collider2D collider) {
+    private string GetInteractorTag(Collider2D collider) {
         foreach (string tag in interactor_tags)
         {
             if (collider.CompareTag(tag))
             {
-                return true;
+                return tag;
             }
         }
-        return false;
+        return null;
     }
 
-    private int FindCollider(Collider2D c1) {
-        return this.withinVicinity.FindIndex((match) => c1.GetInstanceID() == match.GetInstanceID());
+    private int FindCollider(string tag, Collider2D c1) {
+        return this.withinVicinity[tag].FindIndex((match) => c1.GetInstanceID() == match.GetInstanceID());
     }
 
     /**
      * detect interactor has entered vicinity
      */
     private void OnTriggerEnter2D(Collider2D collider) {
-        if(CollisionWithInteractor(collider) && this.FindCollider(collider) == -1) {
-            this.withinVicinity.Add(collider.gameObject);
+        string tag = GetInteractorTag(collider);
+        if(tag != null && this.FindCollider(tag, collider) == -1) {
+            this.withinVicinity[tag].Add(collider.gameObject);
         }
     }
     
@@ -75,8 +108,11 @@ public abstract class Interactible : MonoBehaviour
      * detect interactor has left vicinity
      */
     private void OnTriggerExit2D(Collider2D collider) {
-        if(this.withinVicinity.Contains(collider.gameObject)) {
-            this.withinVicinity.Remove(collider.gameObject);
+        foreach (string tag in interactor_tags)
+        {
+            if(this.withinVicinity[tag].Contains(collider.gameObject)) {
+                this.withinVicinity[tag].Remove(collider.gameObject);
+            }
         }
     }
 }
