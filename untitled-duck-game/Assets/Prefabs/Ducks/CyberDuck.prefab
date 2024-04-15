@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3065736583672666346}
   - component: {fileID: 3561897997156829259}
   - component: {fileID: 87028222449711044}
+  - component: {fileID: 8578298160213500662}
   - component: {fileID: 978402532218396815}
   - component: {fileID: 4619027656086646057}
-  - component: {fileID: 8578298160213500662}
   - component: {fileID: 633450228017206581}
   - component: {fileID: 6459315908531711560}
   - component: {fileID: 6315171610043497058}
@@ -140,36 +140,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &978402532218396815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 875452791571260848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3626fce7f3660b890960090f64abbf05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4619027656086646057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 875452791571260848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5ea8f93caffd659284869dbce606feb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lazerPrefab: {fileID: 6948707575074300359, guid: af6a9c42f3a7956d4802b1d76af3d53c, type: 3}
-  fireDuration: 1
-  fireCooldown: 0
-  obstacles:
-    serializedVersion: 2
-    m_Bits: 640
 --- !u!58 &8578298160213500662
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -205,6 +175,37 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.48
+--- !u!114 &978402532218396815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875452791571260848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3626fce7f3660b890960090f64abbf05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4619027656086646057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875452791571260848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5ea8f93caffd659284869dbce606feb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lazerPrefab: {fileID: 6948707575074300359, guid: af6a9c42f3a7956d4802b1d76af3d53c, type: 3}
+  fireDuration: 1
+  fireCooldown: 5
+  EnemyTargetRange: 7
+  obstacles:
+    serializedVersion: 2
+    m_Bits: 640
 --- !u!114 &633450228017206581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,6 +222,10 @@ MonoBehaviour:
   EnemyLayer:
     serializedVersion: 2
     m_Bits: 512
+  ObstacleLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  enemyNumberOne: {fileID: 0}
   Player: {fileID: 0}
   isMoving: 1
 --- !u!114 &6459315908531711560
@@ -252,12 +257,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aStarDistance: 1
-  collisionPreventionRadius: 1
+  collisionPreventionRadius: 0.25
   stopOnTouch: 1
   aStarMaxDistance: 5
   senpai: {fileID: 0}
-  speed: 5
-  debug: 1
+  speed: 4
+  debug: 0
   blockingLayers:
     serializedVersion: 2
     m_Bits: 128

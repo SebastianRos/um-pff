@@ -4748,7 +4748,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7260194687770585889, guid: 7ed222773cc7dc33dab2ce9e0c23f28f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.5
+      value: 13.74
       objectReference: {fileID: 0}
     - target: {fileID: 7260194687770585889, guid: 7ed222773cc7dc33dab2ce9e0c23f28f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4859,6 +4859,71 @@ PrefabInstance:
     - target: {fileID: 7013356599057255370, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
       propertyPath: m_Name
       value: Enemy of God (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
+--- !u!1001 &1093634810
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2220761333769876105, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2220761333769876105, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
+      propertyPath: senpai
+      value: 
+      objectReference: {fileID: 1313332320}
+    - target: {fileID: 6197127633679416534, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197127633679416534, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.8552108
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197127633679416534, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197127633679416534, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197127633679416534, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197127633679416534, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197127633679416534, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197127633679416534, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197127633679416534, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197127633679416534, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013356599057255370, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
+      propertyPath: m_Name
+      value: Enemy of God (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6392,6 +6457,18 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1313332320}
+    - target: {fileID: 2892144251939749541, guid: fe7cd9897ef38693881161c234a43761, type: 3}
+      propertyPath: debug
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2892144251939749541, guid: fe7cd9897ef38693881161c234a43761, type: 3}
+      propertyPath: senpai
+      value: 
+      objectReference: {fileID: 1313332320}
+    - target: {fileID: 2892144251939749541, guid: fe7cd9897ef38693881161c234a43761, type: 3}
+      propertyPath: aStarMaxDistance
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 6666234058840765649, guid: fe7cd9897ef38693881161c234a43761, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.51
@@ -6436,13 +6513,17 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 1313332320}
+    - target: {fileID: 7578918556077729773, guid: fe7cd9897ef38693881161c234a43761, type: 3}
+      propertyPath: EnemyTargetRange
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8412962277589538549, guid: fe7cd9897ef38693881161c234a43761, type: 3}
       propertyPath: m_Name
       value: RamboDuck
       objectReference: {fileID: 0}
     - target: {fileID: 8412962277589538549, guid: fe7cd9897ef38693881161c234a43761, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8054,5 +8135,6 @@ SceneRoots:
   - {fileID: 132724773}
   - {fileID: 1622642633}
   - {fileID: 294440383}
+  - {fileID: 1093634810}
   - {fileID: 1008357676}
   - {fileID: 1146744045}

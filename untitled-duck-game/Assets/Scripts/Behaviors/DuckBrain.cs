@@ -33,11 +33,10 @@ public class DuckBrain : MonoBehaviour
     }
 
     void FixedUpdate() {
-        CustomDebug.DrawCircle(this.transform.position, this.EnemyTargetRange, 120, Color.gray);
         if(this.enemyNumberOne == null) {
             this.chooseEnemyNumberOne();
 
-            if(this.duckFollowingBehavior.target != this.Player) {
+            if(this.fangirlBehavior.senpai != this.Player) {
                 this.changeTargetToPlayer();
             }
         } else {
@@ -46,26 +45,24 @@ public class DuckBrain : MonoBehaviour
     }
 
     void changeTargetToEnemy() {
-        this.duckFollowingBehavior.target = this.enemyNumberOne.transform;
+        this.fangirlBehavior.senpai = this.enemyNumberOne.transform;
     }
     void changeTargetToPlayer() {
-        this.duckFollowingBehavior.target = this.Player;
+        this.fangirlBehavior.senpai = this.Player;
     }
 
     void chooseEnemyNumberOne() {
         Collider2D[] hits = Physics2D.OverlapCircleAll(this.transform.position, this.EnemyTargetRange, this.EnemyLayer);
-
+        
         GameObject closestEnemy = null;
         float minDistance = this.EnemyTargetRange + 1;
 
         foreach(Collider2D hit in hits) {
             float dist = Vector2.Distance(hit.transform.position, transform.position);
             if(dist < minDistance) {
-                Debug.DrawRay(this.transform.position, (hit.transform.position - this.transform.position).normalized * this.EnemyTargetRange, Color.gray);
-                RaycastHit2D fHit = Physics2D.Raycast(this.transform.position, hit.transform.position - this.transform.position, this.EnemyTargetRange, this.ObstacleLayer);
+                RaycastHit2D fHit = Physics2D.Raycast(this.transform.position, hit.transform.position - this.transform.position, dist, this.ObstacleLayer);
 
                 if(!fHit.collider) {
-                    Debug.Log("No Hit");
                     closestEnemy = hit.gameObject;
                     minDistance = dist;
                 }
@@ -80,8 +77,9 @@ public class DuckBrain : MonoBehaviour
     {
         this.Player = player;
         this.duckFollowingBehavior.target = player;
+        this.fangirlBehavior.senpai = player;
     }
-
+    
     private void followSenpai(){
         if(!this.duckFollowingBehavior.target)
         {
@@ -89,6 +87,7 @@ public class DuckBrain : MonoBehaviour
         }
 
 
+/**
         // Path to target isn't blocked: Move to target
         if (!duckFollowingBehavior.isPathBlockedByDucks())
         {
@@ -102,6 +101,7 @@ public class DuckBrain : MonoBehaviour
             fangirlBehavior.senpai = closestDuck.transform;
             fangirlBehavior.stopAtDistToTarget = 0.45f;
         }
+*/
 
         Vector2 move = fangirlBehavior.CalculateDirection();
         this.rb.velocity = move;

@@ -155,7 +155,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -205,9 +205,10 @@ MonoBehaviour:
     m_Bits: 512
   ObstacleLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   enemyNumberOne: {fileID: 0}
   Player: {fileID: 0}
+  isMoving: 1
 --- !u!114 &4249486497135400029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,7 +226,7 @@ MonoBehaviour:
   stopOnTouch: 1
   aStarMaxDistance: 15
   senpai: {fileID: 0}
-  speed: 4
+  speed: 3.5
   debug: 0
   blockingLayers:
     serializedVersion: 2

@@ -4,6 +4,7 @@ public class CyberDuckBehaviour : MonoBehaviour {
     public GameObject lazerPrefab;
     public float fireDuration;
     public float fireCooldown;
+    public int EnemyTargetRange = 10;
     public LayerMask obstacles;
 
     private GameObject lazerRef;
@@ -14,6 +15,7 @@ public class CyberDuckBehaviour : MonoBehaviour {
     private DuckBrain duckBrain;
     private float fireEndTime;
     private float nextFire = 0;
+    
     public void Start(){
         animator = GetComponent<Animator>();
         duckBrain = GetComponent<DuckBrain>();
@@ -37,7 +39,7 @@ public class CyberDuckBehaviour : MonoBehaviour {
             RaycastHit2D hit = Physics2D.Raycast(
                 animator.gameObject.transform.position,
                 enemy.transform.position - animator.gameObject.transform.position,
-                1000,
+                EnemyTargetRange,
                 obstacles
             );
             if (hit.collider != null && hit.collider.gameObject == enemy){

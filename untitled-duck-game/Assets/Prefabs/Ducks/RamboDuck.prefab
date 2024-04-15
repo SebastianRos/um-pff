@@ -155,7 +155,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -199,15 +199,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 951c21d889b6863529488f362e1554c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyTargetRange: 10
+  EnemyTargetRange: 7
   EnemyLayer:
     serializedVersion: 2
     m_Bits: 512
   ObstacleLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   enemyNumberOne: {fileID: 0}
   Player: {fileID: 0}
+  isMoving: 1
 --- !u!114 &2892144251939749541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,7 +224,7 @@ MonoBehaviour:
   aStarDistance: 1
   collisionPreventionRadius: 0.25
   stopOnTouch: 0
-  aStarMaxDistance: 15
+  aStarMaxDistance: 7
   senpai: {fileID: 0}
   speed: 4
   debug: 0

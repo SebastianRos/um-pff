@@ -11,7 +11,7 @@ public class FangirlBehavior: MonoBehaviour
     public float collisionPreventionRadius = 1.0f;
     public bool stopOnTouch = true;
 
-    [Range(1f, 15f)]
+    [Range(1f, 20f)]
     public float aStarMaxDistance = 5.0f;
     
     public Transform senpai;

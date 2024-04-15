@@ -78,7 +78,6 @@ public class CellarGenerator : MonoBehaviour
 
         // Generate paths between rooms
         foreach(Room room in levelRooms) {
-            Debug.Log("Room pos " + room.position);
             room.position = Vector2Int.RoundToInt(room.position);
             points.Add(new Point(room.position.x, room.position.y));
         }
@@ -242,6 +241,7 @@ public class CellarGenerator : MonoBehaviour
     void PlacePond(float x, float y)
     {
         int r = UnityEngine.Random.Range(0, this.PondPrefabs.Length);
+        Debug.Log("Pond " + r);
         Instantiate(PondPrefabs[r], new Vector3(x, y, 0), Quaternion.identity);
     }
 
@@ -289,8 +289,8 @@ public class CellarGenerator : MonoBehaviour
             // Loose 10% duck chance per level
             float r = UnityEngine.Random.value;
             if(r < this.Parent.ChanceOfPond - difficulty * 0.05) {
-                float x = this.position.x - this.width/2 + UnityEngine.Random.Range(0, this.width-1) + 0.5f;
-                float y = this.position.y - this.height/2 + UnityEngine.Random.Range(0, this.height-1) + 0.5f;
+                float x = this.position.x - this.width/2 + UnityEngine.Random.Range(0.5f, this.width-1.5f) + 0.5f;
+                float y = this.position.y - this.height/2 + UnityEngine.Random.Range(0.5f, this.height-1.5f) + 0.5f;
                 
                 if(!blockedPositions.Contains(new Vector2(x, y))) {
                     this.blockedPositions.Add(new Vector2(x, y));
@@ -314,7 +314,7 @@ public class CellarGenerator : MonoBehaviour
         
         public void PopulateEnemies(int difficulty) {
             // Gain 5% enemy chance per level
-            for(int i = 0; i < this.Parent.MaxEnemiesPerRoom && UnityEngine.Random.value < this.Parent.ChanceOfEnemies + 0.05 * difficulty; i++) {
+            for(int i = 0; i < this.Parent.MaxEnemiesPerRoom + (int) (difficulty / 3) && UnityEngine.Random.value < this.Parent.ChanceOfEnemies + 0.05 * difficulty; i++) {
                 float x = this.position.x - this.width/2 + UnityEngine.Random.Range(1, this.width-2) + 0.5f;
                 float y = this.position.y - this.height/2 + UnityEngine.Random.Range(1, this.height-2) + 0.5f;
                 
