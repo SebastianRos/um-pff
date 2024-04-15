@@ -710,11 +710,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!4 &642849712 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1771599748676740519, guid: d3e825f84f7321f9d9631c6721839244, type: 3}
-  m_PrefabInstance: {fileID: 5364159245355998051}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &836846683
 GameObject:
   m_ObjectHideFlags: 0
@@ -2178,10 +2173,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5903151611768014675, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6197127633679416534, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.430785
@@ -2225,10 +2216,6 @@ PrefabInstance:
     - target: {fileID: 7013356599057255370, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
       propertyPath: m_Name
       value: Enemy of God
-      objectReference: {fileID: 0}
-    - target: {fileID: 7013356599057255370, guid: e1fd44062bc277e1283f84405d2d25f7, type: 3}
-      propertyPath: m_Layer
-      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2286,10 +2273,6 @@ PrefabInstance:
     - target: {fileID: 8412962277589538549, guid: fe7cd9897ef38693881161c234a43761, type: 3}
       propertyPath: m_Name
       value: RamboDuck
-      objectReference: {fileID: 0}
-    - target: {fileID: 8412962277589538549, guid: fe7cd9897ef38693881161c234a43761, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2418,10 +2401,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 633450228017206581, guid: b4ba893e7b1a95145bf57363980c8681, type: 3}
-      propertyPath: Player
-      value: 
-      objectReference: {fileID: 642849712}
     - target: {fileID: 875452791571260848, guid: b4ba893e7b1a95145bf57363980c8681, type: 3}
       propertyPath: m_Name
       value: CyberDuck
@@ -2466,10 +2445,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6459315908531711560, guid: b4ba893e7b1a95145bf57363980c8681, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 642849712}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
