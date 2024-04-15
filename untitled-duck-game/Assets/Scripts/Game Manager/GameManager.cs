@@ -1,4 +1,8 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -30,7 +34,6 @@ public class GameManager : MonoBehaviour, IListener
     public int currStage { get; set; } = 1;
     private int currPlayerlife;
     private int currBreadcrumbs;
-    private List<GameObject> enemies;
     // --- current state ---
 
     private enum Events {
@@ -80,8 +83,8 @@ public class GameManager : MonoBehaviour, IListener
         if(evt.Equals(this.MyEvents[Events.DAMAGE_PLAYER])) {
             this.currPlayerlife--;
             if(this.currPlayerlife < 1) {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 EventBus.Fire(this.MyEvents[Events.RESET]);
+                StartCoroutine(this.ChangeScene(true));
                 // EventBus.Fire(this.MyEvents[Events.GAME_OVER]);
                 Debug.Log("GAME OVER");
             }
@@ -93,7 +96,7 @@ public class GameManager : MonoBehaviour, IListener
             return;
         }
     }
-
+    
     public int getBreadCount(){
         return currBreadcrumbs;
     }
@@ -102,5 +105,30 @@ public class GameManager : MonoBehaviour, IListener
     }
     public void incrementBread(){
         currBreadcrumbs++;
+    }
+
+    private IEnumerator ChangeScene(bool takeDucksWithYou)
+    {
+        DuckBrain[] ducks = takeDucksWithYou ? FindObjectsOfType<DuckBrain>() : new DuckBrain[0];
+        foreach(DuckBrain duck in ducks)
+        {
+            DontDestroyOnLoad(duck.gameObject);
+        }
+
+        AsyncOperation load = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+
+        while(!load.isDone)
+        {
+            yield return null;
+        }
+
+        GameObject player = GameObject.Find("Player");
+
+        foreach(DuckBrain duck in ducks)
+        {
+            duck.SetPlayer(player.transform);
+        }
+
+
     }
 }
