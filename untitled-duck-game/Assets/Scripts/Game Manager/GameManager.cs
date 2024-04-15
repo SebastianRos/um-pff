@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -30,7 +32,6 @@ public class GameManager : MonoBehaviour, IListener
     public int currStage { get; set; } = 1;
     private int currPlayerlife;
     private int currBreadcrumbs;
-    private List<GameObject> enemies;
     // --- current state ---
 
     private enum Events {
@@ -80,8 +81,8 @@ public class GameManager : MonoBehaviour, IListener
         if(evt.Equals(this.MyEvents[Events.DAMAGE_PLAYER])) {
             this.currPlayerlife--;
             if(this.currPlayerlife < 1) {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 EventBus.Fire(this.MyEvents[Events.RESET]);
+                this.ChangeScene(true);
                 // EventBus.Fire(this.MyEvents[Events.GAME_OVER]);
                 Debug.Log("GAME OVER");
             }
@@ -93,7 +94,7 @@ public class GameManager : MonoBehaviour, IListener
             return;
         }
     }
-
+    
     public int getBreadCount(){
         return currBreadcrumbs;
     }
@@ -102,5 +103,30 @@ public class GameManager : MonoBehaviour, IListener
     }
     public void incrementBread(){
         currBreadcrumbs++;
+    }
+
+    private void ChangeScene(bool takeDucksWithYou)
+    {
+        DuckBrain[] ducks = takeDucksWithYou ? FindObjectsOfType<DuckBrain>() : new DuckBrain[0];
+        foreach(DuckBrain duck in ducks)
+        {
+            DontDestroyOnLoad(duck.gameObject);
+        }
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        DuckBrain[] nextLevelDucks = FindObjectsOfType<DuckBrain>().Where(d=>!ducks.Contains(d)).ToArray();
+
+        if(nextLevelDucks.Length == 0)
+        {
+            return;
+        }
+
+        foreach(DuckBrain duck in ducks)
+        {
+            duck.GetComponent<DuckFollowingBehavior>().target = nextLevelDucks[0].GetComponent<DuckFollowingBehavior>().target;
+        }
+
+
     }
 }
