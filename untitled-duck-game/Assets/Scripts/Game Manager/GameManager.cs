@@ -93,4 +93,14 @@ public class GameManager : MonoBehaviour, IListener
             return;
         }
     }
+
+    public int getBreadCount(){
+        return currBreadcrumbs;
+    }
+    public void decrementBread(){
+        currBreadcrumbs--;
+    }
+    public void incrementBread(){
+        currBreadcrumbs++;
+    }
 }

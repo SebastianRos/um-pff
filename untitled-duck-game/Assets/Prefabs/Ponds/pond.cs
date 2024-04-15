@@ -9,11 +9,16 @@ public class Pond : AbstractInteractionBehavior, Observer
     private Drawboard drawboardScript;
     private GameObject drawboardGo;
     private bool drawboardOpen = false;
+    private bool duckSummend = false;
     // Start is called before the first frame update
     void Start(){}
 
     public override void OnInteract() {
-        if (!drawboardOpen)
+        if (
+            0 < GameManager.instance.getBreadCount() 
+            && !drawboardOpen
+            && !duckSummend
+        )
             openDrawBoard();
     }
 
@@ -40,6 +45,8 @@ public class Pond : AbstractInteractionBehavior, Observer
         EventBus.Fire("enablePlayer");
     }
     private void onDrawBoardSuccess(){
+        GameManager.instance.decrementBread();
+        duckSummend = true;
         drawboardOpen = false;
         Destroy(drawboardGo);
         EventBus.Fire("enablePlayer");
