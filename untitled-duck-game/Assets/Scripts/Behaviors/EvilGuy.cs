@@ -7,10 +7,10 @@ using UnityEngine.AI;
 
 public class EvilGuy : MonoBehaviour
 {
-    private FangirlBehavior fangirlBehavior;
+    public FangirlBehavior fangirlBehavior;
     private Rigidbody2D rb;
 
-    void Start()
+    void Awake()
     {
         fangirlBehavior = GetComponent<FangirlBehavior>();
         rb = this.GetComponent<Rigidbody2D>();

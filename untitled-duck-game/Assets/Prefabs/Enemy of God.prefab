@@ -13,15 +13,15 @@ GameObject:
   - component: {fileID: 7532126459237301649}
   - component: {fileID: 3874265158475121749}
   - component: {fileID: 6569027794355643768}
+  - component: {fileID: -878324343175552786}
   - component: {fileID: 2220761333769876105}
   - component: {fileID: 3136023421586752258}
   - component: {fileID: 5903151611768014675}
   - component: {fileID: 6527317534002813749}
-  - component: {fileID: -878324343175552786}
   - component: {fileID: 6459569008422246534}
   m_Layer: 0
   m_Name: Enemy of God
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -190,6 +190,27 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!95 &-878324343175552786
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7013356599057255370}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7f171177eacfd14869e42f2f543d7c53, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &2220761333769876105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,16 +223,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1b370edaf9264656b717a29f0c3dacb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aStarDistance: 1
-  collisionPreventionRadius: 1
+  aStarDistance: 0.5
+  collisionPreventionRadius: 0.6
   stopOnTouch: 0
-  aStarMaxDistance: 5
+  aStarMaxDistance: 10
   senpai: {fileID: 0}
   speed: 2
-  debug: 0
+  debug: 1
   blockingLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   stopAtDistToTarget: 0
 --- !u!114 &3136023421586752258
 MonoBehaviour:
@@ -238,6 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f36e187c6630b0abb92458f561b38914, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fangirlBehavior: {fileID: 0}
 --- !u!114 &6527317534002813749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,27 +274,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactor_tag: Player
   trigger_event: 
---- !u!95 &-878324343175552786
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7013356599057255370}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7f171177eacfd14869e42f2f543d7c53, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &6459569008422246534
 MonoBehaviour:
   m_ObjectHideFlags: 0

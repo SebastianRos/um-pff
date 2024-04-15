@@ -82,7 +82,7 @@ MonoBehaviour:
   stopOnTouch: 0
   aStarMaxDistance: 10
   senpai: {fileID: 0}
-  speed: 5
+  speed: 4
   debug: 0
   blockingLayers:
     serializedVersion: 2

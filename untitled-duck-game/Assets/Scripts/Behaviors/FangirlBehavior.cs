@@ -26,24 +26,34 @@ public class FangirlBehavior: MonoBehaviour
 
     public float stopAtDistToTarget = 0.0f;
 
-    void Awake()
-    {
-        if (senpai == null)
-        {
-            senpai = GameObject.Find("Player").transform;
-        }
-    }
-
     public Vector2 CalculateDirection()
     {
         if(debug) 
         {
-            Debug.DrawLine(transform.position, senpai.position, Color.blue);
             CustomDebug.DrawCircle(transform.position, collisionPreventionRadius, 16, Color.red);
+            Debug.DrawLine(transform.position, senpai.transform.position, Color.cyan);
         }
 
         if (senpai != null)
         {
+            float distToTarget = Vector2.Distance(transform.position, senpai.position);
+
+            // No need to search if target is too far away
+            if (distToTarget > aStarMaxDistance) {
+                return Vector2.zero;
+            }
+
+            // Stop if stopOnTouch is enabled and the target is in collision range
+            if (distToTarget <= collisionPreventionRadius && stopOnTouch) {
+                return Vector2.zero;
+            }
+            
+            // Stop if min dist is reached
+            if (distToTarget <= stopAtDistToTarget)
+            {
+                return Vector2.zero;
+            }
+
             Vector2[] path = FindBestPath(transform.position, senpai.position);
 
             if (path.Length > 0)
@@ -57,14 +67,7 @@ public class FangirlBehavior: MonoBehaviour
                     }
                 }
                 
-                float distToTarget = Vector2.Distance(transform.position, senpai.position);
 
-                if (distToTarget <= collisionPreventionRadius && stopOnTouch) {
-                    return Vector2.zero;
-                } else if (distToTarget <= stopAtDistToTarget)
-                {
-                    return Vector2.zero;
-                }
                 return (path[0] - (Vector2)transform.position).normalized * speed;
             }
         }
@@ -92,7 +95,9 @@ public class FangirlBehavior: MonoBehaviour
 
             //float distToTarget = Vector2.Distance(current, targetPosition) - collisionPreventionRadius;
 
-            RaycastHit2D hit = Physics2D.Raycast(current, targetPosition - current, Vector2.Distance(current, targetPosition), 1 << senpai.gameObject.layer);
+            RaycastHit2D[] hits = Physics2D.RaycastAll(current, targetPosition - current, Vector2.Distance(current, targetPosition), 1 << senpai.gameObject.layer);
+            RaycastHit2D hit = Array.Find(hits, h => h.collider != null && h.collider.gameObject == senpai.gameObject);
+            
             if(hit.collider == null) {
                 throw new System.Exception("Senpai not found");
             }
@@ -109,7 +114,8 @@ public class FangirlBehavior: MonoBehaviour
             if (distToTarget <= 0)
             {
                 if(debug) {
-                    Debug.DrawLine(current, targetPosition, Color.yellow);
+                    Debug.DrawLine(current, hit.point, Color.yellow);
+                    Debug.Log("[" + name + "] Dist to senpai " + distToTarget);
                     //Debug.Break();
                 }
                 

@@ -4,7 +4,7 @@ using UnityEngine;
 public abstract class Interactible : MonoBehaviour
 {
     // This one has to be
-    public string interactor_tag = "Player";
+    public List<string> interactor_tags = new List<string>{"Player"};
     public string trigger_event = null;
     private readonly List<GameObject> withinVicinity = new List<GameObject>();
 
@@ -48,7 +48,14 @@ public abstract class Interactible : MonoBehaviour
      * unify collision detection 
      */
     private bool CollisionWithInteractor(Collider2D collider) {
-        return collider.CompareTag(interactor_tag);
+        foreach (string tag in interactor_tags)
+        {
+            if (collider.CompareTag(tag))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     private int FindCollider(Collider2D c1) {

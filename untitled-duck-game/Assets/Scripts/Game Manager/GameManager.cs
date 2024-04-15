@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour, IListener
         {
             Destroy(gameObject);
         }
+        Debug.Log("AWAKE " + instance.currStage);
     }
    
     // --- initialisation ---
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour, IListener
     // --- initialisation ---
 
     // --- current state ---
+    public int currStage { get; set; } = 1;
     private int currPlayerlife;
     private int currBreadcrumbs;
     private List<GameObject> enemies;
@@ -37,6 +39,7 @@ public class GameManager : MonoBehaviour, IListener
         COLLECT_TOAST,
         DAMAGE_PLAYER,
         GAME_OVER,
+        LEVEL_COMPLETE,
     }
     private readonly Dictionary<Events, string> MyEvents = new Dictionary<Events, string>()
     {
@@ -45,28 +48,23 @@ public class GameManager : MonoBehaviour, IListener
         {Events.COLLECT_TOAST, "collect_toast"},
         {Events.DAMAGE_PLAYER, "damage_player"},
         {Events.GAME_OVER, "game_over"},
+        {Events.LEVEL_COMPLETE, "level_complete"},
     };
     
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         foreach(string evt in this.MyEvents.Values)
         {
             EventBus.Register(evt, this.gameObject);
         }
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void Reset()
     {
         this.currPlayerlife = this.maxPlayerLife;        
         this.currBreadcrumbs = this.startBreadcrumbs;
+        this.currStage = 1;
     }
 
     public void Callback(string evt) {
@@ -87,6 +85,12 @@ public class GameManager : MonoBehaviour, IListener
                 // EventBus.Fire(this.MyEvents[Events.GAME_OVER]);
                 Debug.Log("GAME OVER");
             }
+            return;
+        }
+        if(evt.Equals(this.MyEvents[Events.LEVEL_COMPLETE])) {
+            this.currStage++;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            return;
         }
     }
 }
