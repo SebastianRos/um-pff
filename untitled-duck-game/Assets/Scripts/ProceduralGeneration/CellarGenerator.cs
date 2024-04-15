@@ -1,14 +1,10 @@
 using System.Collections.Generic;
 using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using DelaunatorSharp;
 using System.Linq;
 using DelaunatorSharp.Unity.Extensions;
-using Unity.Collections;
-using UnityEditor.Tilemaps;
-using System.Data;
 
 public class CellarGenerator : MonoBehaviour
 {
